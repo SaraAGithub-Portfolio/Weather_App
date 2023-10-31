@@ -15,6 +15,7 @@ let weather = {
         document.querySelector(".temp").innerText = temp + "°C";
         document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
         document.querySelector(".wind").innerText = "Wind speed: " + speed + "km/ h";
+        document.querySelector(".weather").classList.remove("loading");
 
     },
     search: function () {
@@ -24,4 +25,12 @@ let weather = {
 
 document.querySelector(".search button").addEventListener("click", function () {
     weather.search();
-})
+});
+
+document.querySelector(".search-bar").addEventListener("keyup", function (event) {
+    if (event.key == "Enter") {
+        weather.search();
+    }
+});
+
+weather.fetchWeather("London");
